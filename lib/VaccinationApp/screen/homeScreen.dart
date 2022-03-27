@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:myapp/FriendlyChatApp/ChatScreen.dart';
+import 'package:myapp/VaccinationApp/screen/loginScreen.dart';
+import 'package:myapp/VaccinationApp/screen/registrationScreen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -55,12 +57,7 @@ class HomeScreen extends StatelessWidget {
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) {
-                                return const ChatScreen();
-                              }),
-                            );
+                            Navigator.pushNamed(context, '/register');
                           },
                           child: const Text('Register'),
                         ),
@@ -69,14 +66,9 @@ class HomeScreen extends StatelessWidget {
                       Expanded(
                         child: OutlinedButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) {
-                                return const ChatScreen();
-                              }),
-                            );
+                            Navigator.pushNamed(context, '/login');
                           },
-                          child: Text('Sign In'),
+                          child: const Text('Sign In'),
                         ),
                       )
                     ],
