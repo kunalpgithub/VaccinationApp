@@ -5,30 +5,15 @@ import 'package:myapp/FriendlyChatApp/ChatScreen.dart';
 import 'package:myapp/VaccinationApp/screen/loginScreen.dart';
 import 'package:myapp/VaccinationApp/screen/registrationScreen.dart';
 
+import '../widgets/withoutLoginLayout.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle style = ElevatedButton.styleFrom(
-        textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        primary: Colors.green,
-        onSurface: Colors.white);
-
-    final ButtonStyle elevatedButtonStyle = ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(Colors.white),
-        foregroundColor: MaterialStateProperty.all(Colors.grey),
-        textStyle: MaterialStateProperty.all(
-            TextStyle(fontSize: 20, fontWeight: FontWeight.bold)));
-
-    return Container(
-      color: Theme.of(context).accentColor,
-      // decoration: const BoxDecoration(
-      //     image: DecorationImage(
-      //         colorFilter: ColorFilter.mode(Colors.pink, BlendMode.softLight),
-      //         image: AssetImage('assets/images/cake_small.jpg'),
-      //         fit: BoxFit.cover)),
-      child: Column(
+    return WithOutLoginLayout(
+      body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -57,7 +42,14 @@ class HomeScreen extends StatelessWidget {
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/register');
+                            showModalBottomSheet(
+                                context: context,
+                                builder: (context) {
+                                  return Column(
+                                    children: const [Text("Register here.")],
+                                  );
+                                });
+                            // Navigator.pushNamed(context, '/register');
                           },
                           child: const Text('Register'),
                         ),
