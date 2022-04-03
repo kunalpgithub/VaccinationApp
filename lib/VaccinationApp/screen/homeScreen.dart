@@ -54,11 +54,19 @@ class HomeScreen extends StatelessWidget {
                           child: const Text('Register'),
                         ),
                       ),
-                      const Padding(padding: EdgeInsets.all(2.0)),
                       Expanded(
                         child: OutlinedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/login');
+                            // Navigator.pushNamed(context, '/login');
+                            showModalBottomSheet(
+                                isDismissible: false,
+                                context: context,
+                                builder: (context) {
+                                  return const LoginScreen();
+                                  // return Column(
+                                  //   children: const [Text("Register here.")],
+                                  // );
+                                });
                           },
                           child: const Text('Sign In'),
                         ),

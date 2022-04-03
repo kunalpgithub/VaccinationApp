@@ -27,28 +27,31 @@ class _LoginScreenState extends State<LoginScreen> {
   String _mobile = "";
   @override
   Widget build(BuildContext context) {
-    return WithOutLoginLayout(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Card(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              // mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(padding: EdgeInsets.all(15)),
-                Text('Hello ', style: Theme.of(context).textTheme.headline4),
-                Text('Welcome To Vaccinatify',
-                    style: Theme.of(context).textTheme.headline5),
-                LoginForm(),
-                Padding(padding: EdgeInsets.all(15)),
-              ],
-            ),
-          ),
-        ],
-      ),
+    return
+        // WithOutLoginLayout(
+        //   body:
+        // Column(
+        //   mainAxisAlignment: MainAxisAlignment.end,
+        //   children: [
+        //     Card(
+        //       child:
+        Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      // mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Padding(padding: EdgeInsets.all(15)),
+        Text('Hello ', style: Theme.of(context).textTheme.headline4),
+        Text('Welcome To Vaccinatify',
+            style: Theme.of(context).textTheme.headline5),
+        LoginForm(),
+        Padding(padding: EdgeInsets.all(15)),
+      ],
     );
+    //     ),
+    //   ],
+    // ),
+    // );
   }
 }
 
@@ -87,7 +90,8 @@ class _LoginFormState extends State<LoginForm> {
           ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  Navigator.pushNamed(context, '/otpverification');
+                  Navigator.pop(context);
+                  // Navigator.pushNamed(context, '/otpverification');
                 }
               },
               child: const Text('OTP'))
