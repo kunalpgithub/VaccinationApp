@@ -7,12 +7,27 @@ class WithOutLoginLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Theme.of(context).primaryColor,
-        // decoration: const BoxDecoration(
-        //     image: DecorationImage(
-        //         colorFilter: ColorFilter.mode(Colors.pink, BlendMode.softLight),
-        //         image: AssetImage('assets/images/cake_small.jpg'),
-        //         fit: BoxFit.cover)),
+        // constraints: const BoxConstraints.expand(),
+        decoration: const BoxDecoration(
+          // borderRadius: BorderRadius.circular(10.0),
+          // gradient: LinearGradient(
+          //     begin: Alignment.topCenter,
+          //     end: Alignment.bottomCenter,
+          //     stops: [
+          //       0.9,
+          //       1.0,
+          //     ],
+          //     colors: [
+          //       Color.fromARGB(1, 240, 22, 29),
+          //       Colors.black
+          //     ]),
+          image: DecorationImage(
+              // opacity: 0.7,
+              colorFilter: ColorFilter.mode(
+                  Color.fromARGB(255, 227, 155, 157), BlendMode.modulate),
+              image: AssetImage('assets/images/pexels-anna-shvets-4588047.png'),
+              fit: BoxFit.none),
+        ),
         child: Padding(padding: const EdgeInsets.only(top: 0), child: body));
   }
 }

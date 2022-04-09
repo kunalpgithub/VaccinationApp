@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/VaccinationApp/screen/dashboardScreen.dart';
 import 'package:myapp/VaccinationApp/screen/homeScreen.dart';
 import 'package:myapp/VaccinationApp/screen/loginScreen.dart';
 import 'package:myapp/VaccinationApp/screen/otpVerificationScreen.dart';
@@ -68,7 +69,8 @@ class VaccinationApp extends StatelessWidget {
         '/': (context) => const HomeScreen(),
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegistrationScreen(),
-        '/otpverification': (context) => const OtpVerificationScreen()
+        '/otpverification': (context) => const OtpVerificationScreen(),
+        '/dashboard': (context) => const DashboardScreen()
       },
       // home: const HomeScreen()
     );
