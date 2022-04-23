@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/VaccinationApp/widgets/RegistrationForm.dart';
 import 'package:myapp/VaccinationApp/widgets/withoutLoginLayout.dart';
 
 class RegistrationScreen extends StatelessWidget {
@@ -7,15 +8,18 @@ class RegistrationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WithOutLoginLayout(
+      backgroundImage: 'assets/images/pexels-blue-bird-7210698_2.png',
       body: Column(
-        children: [
-          Text('Registration Screen',
-              style: Theme.of(context).textTheme.bodyText1),
-          OutlinedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Go Back'))
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: const [
+          RegistrationForm(),
+          // OutlinedButton(
+          //     onPressed: () {
+          //       Navigator.pop(context);
+          //     },
+          //     child: Text('Go Back')),
         ],
       ),
     );

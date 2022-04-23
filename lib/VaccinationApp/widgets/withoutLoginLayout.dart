@@ -2,23 +2,26 @@ import 'package:flutter/material.dart';
 
 class WithOutLoginLayout extends StatelessWidget {
   final Widget? body;
-  const WithOutLoginLayout({Key? key, this.body}) : super(key: key);
+  String backgroundImage;
+  WithOutLoginLayout(
+      {Key? key,
+      this.body,
+      this.backgroundImage = 'assets/images/pexels-anna-shvets-4588047.png'})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                  colorFilter: ColorFilter.mode(
-                      Color.fromARGB(255, 227, 155, 157), BlendMode.modulate),
-                  image: AssetImage(
-                      'assets/images/pexels-anna-shvets-4588047.png'),
-                  fit: BoxFit.none),
-            ),
-            child:
-                Padding(padding: const EdgeInsets.only(top: 0), child: body)),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                // colorFilter:
+                //     ColorFilter.mode(Color(0xfffcd3d6), BlendMode.modulate),
+                image: AssetImage(backgroundImage),
+                fit: BoxFit.fill),
+          ),
+        ),
         Opacity(
           opacity: 0.25,
           child: Container(
@@ -26,10 +29,19 @@ class WithOutLoginLayout extends StatelessWidget {
                 gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    stops: [0.7, 0.8],
+                    stops: [0.1, 0.2],
                     colors: [Color(0xFFFF9A9E), Color(0xFFC2262C)])),
           ),
         ),
+        AppBar(
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            leading: IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              icon: const Icon(Icons.arrow_back_ios, color: Color(0xffffffff)),
+            )),
         Container(
           child: body,
         )
