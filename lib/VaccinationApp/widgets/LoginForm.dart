@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:myapp/VaccinationApp/widgets/OtpInput.dart';
@@ -20,33 +21,41 @@ class _LoginFormState extends State<LoginForm> {
   final TextEditingController _mobileController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Form(
-        key: _formKey,
-        child: SizedBox(
-          width: 300,
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(40, 48, 58, 5),
+        child: Form(
+          key: _formKey,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              // const Padding(padding: EdgeInsets.all(15)),
+              Text('Hello ', style: Theme.of(context).textTheme.bodyText1),
+              const Padding(padding: EdgeInsets.symmetric(vertical: 8)),
+              Text('Welcome To Vaccinatify',
+                  style: Theme.of(context).textTheme.bodyText2),
+              const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
               if (!isOtpSent) ...[
-                TextFormField(
-                  controller: _mobileController,
-                  keyboardType: TextInputType.number,
-                  maxLength: 10,
-                  inputFormatters: <TextInputFormatter>[
-                    FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                  ],
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Please enter mobile number.";
-                    }
-                    return null;
-                  },
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(), labelText: 'Mobile Number'),
+                AppTextFormField(
+                  // controller: _mobileController,
+                  // keyboardType: TextInputType.number,
+                  // maxLength: 10,
+                  // inputFormatters: <TextInputFormatter>[
+                  //   FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                  // ],
+                  // validator: (value) {
+                  //   if (value == null || value.isEmpty) {
+                  //     return "Please enter mobile number.";
+                  //   }
+                  //   return null;
+                  // },
+                  // decoration: const InputDecoration(
+                  //     border: OutlineInputBorder(), labelText: 'Mobile Number'),
+                  labelText: 'Mobile Number',
                 ),
+                const Padding(padding: EdgeInsets.symmetric(vertical: 13)),
                 Row(
                   children: [
                     Expanded(
@@ -62,25 +71,45 @@ class _LoginFormState extends State<LoginForm> {
                     ),
                   ],
                 ),
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  const Text("Don't have an Account?"),
+                Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                  Text(
+                    "Don't have an Account?",
+                    style: Theme.of(context).textTheme.caption,
+                  ),
                   TextButton(
                       onPressed: () {
-                        Navigator.pop(context);
-                        showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return const RegistrationForm();
-                            });
+                        Navigator.pushNamed(context, '/register');
                       },
-                      child: const Text('Sign Up'))
+                      child: Text('Sign Up',
+                          style:
+                              TextStyle(color: Theme.of(context).primaryColor)))
                 ])
               ],
               if (isOtpSent) ...[
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Text("We have sent verification code to " +
-                      _mobileController.text),
+                  child: Row(
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                            text: "We have sent verification code to " +
+                                _mobileController.text,
+                            style: Theme.of(context).textTheme.caption,
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: " Change mobile number",
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      setState(() {
+                                        isOtpSent = false;
+                                      });
+                                    },
+                                  style: TextStyle(
+                                      color: Theme.of(context).primaryColor)),
+                            ]),
+                      ),
+                    ],
+                  ),
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -92,6 +121,7 @@ class _LoginFormState extends State<LoginForm> {
                     OtpInput(_fieldFour, true),
                   ],
                 ),
+                const Padding(padding: EdgeInsets.symmetric(vertical: 8)),
                 Row(
                   children: [
                     Expanded(
@@ -106,21 +136,16 @@ class _LoginFormState extends State<LoginForm> {
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Text("Didn't receive code?"),
+                    Text(
+                      "Didn't receive code?",
+                      style: Theme.of(context).textTheme.caption,
+                    ),
                     TextButton(
                         onPressed: () {}, child: const Text("Request Again")),
                   ],
                 ),
-                TextButton(
-                    onPressed: () {
-                      // Navigator.pop(context);
-                      setState(() {
-                        isOtpSent = false;
-                      });
-                    },
-                    child: const Text("Change mobile number")),
               ]
             ],
           ),

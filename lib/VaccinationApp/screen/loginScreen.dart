@@ -23,23 +23,13 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return WithOutLoginLayout(
+      backgroundImage: 'assets/images/pexels-blue-bird-7210698_2.png',
       body: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Padding(padding: EdgeInsets.all(15)),
-          Text('Hello ', style: Theme.of(context).textTheme.headline4),
-          Text('Welcome To Vaccinatify',
-              style: Theme.of(context).textTheme.headline5),
-          const Padding(padding: EdgeInsets.all(15)),
+        children: const [
           LoginForm(),
-          OutlinedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Go Back'))
-          // const Padding(padding: EdgeInsets.all(15)),
         ],
       ),
     );

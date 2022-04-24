@@ -15,11 +15,6 @@ class RegistrationScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: const [
           RegistrationForm(),
-          // OutlinedButton(
-          //     onPressed: () {
-          //       Navigator.pop(context);
-          //     },
-          //     child: Text('Go Back')),
         ],
       ),
     );

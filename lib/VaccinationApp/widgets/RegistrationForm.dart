@@ -110,6 +110,7 @@ class AppTextFormField extends StatelessWidget {
         shadowColor: Colors.grey,
         borderRadius: const BorderRadius.all(Radius.circular(8.0)),
         child: TextFormField(
+          obscureText: false,
           decoration:
               InputDecoration(labelText: labelText, prefixIcon: Icon(iconData)),
         ));
