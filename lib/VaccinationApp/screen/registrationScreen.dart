@@ -9,13 +9,18 @@ class RegistrationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return WithOutLoginLayout(
       backgroundImage: 'assets/images/pexels-blue-bird-7210698_2.png',
-      body: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
-          RegistrationForm(),
-        ],
+      body: Container(
+        alignment: Alignment.bottomCenter,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: const [
+              RegistrationForm(),
+            ],
+          ),
+        ),
       ),
     );
   }

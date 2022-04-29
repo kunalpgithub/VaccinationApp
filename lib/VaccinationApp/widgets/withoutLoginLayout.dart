@@ -33,24 +33,26 @@ class WithOutLoginLayout extends StatelessWidget {
                     colors: [Color(0xFFFF9A9E), Color(0xFFC2262C)])),
           ),
         ),
-        if (ModalRoute.of(context)?.settings.name != '/')
-          AppBar(
-              elevation: 0,
-              backgroundColor: Colors.transparent,
-              leading: IconButton(
-                onPressed: () {
-                  if (ModalRoute.of(context)?.settings.name != '/') {
-                    Navigator.of(context).pop();
-                  }
-                  // Navigator.of(context).popUntil(
-                  //     (route) => ModalRoute.of(context)?.settings.name == '/');
-                },
-                icon:
-                    const Icon(Icons.arrow_back_ios, color: Color(0xffffffff)),
-              )),
-        Container(
-          child: body,
-        )
+        Scaffold(
+            appBar: ModalRoute.of(context)?.settings.name != '/'
+                ? AppBar(
+                    elevation: 0,
+                    backgroundColor: Colors.transparent,
+                    leading: IconButton(
+                      onPressed: () {
+                        if (ModalRoute.of(context)?.settings.name != '/') {
+                          Navigator.of(context).pop();
+                        }
+                        // Navigator.of(context).popUntil(
+                        //     (route) => ModalRoute.of(context)?.settings.name == '/');
+                      },
+                      icon: const Icon(Icons.arrow_back_ios,
+                          color: Color(0xffffffff)),
+                    ))
+                : null,
+            resizeToAvoidBottomInset: true,
+            backgroundColor: Colors.transparent,
+            body: body)
       ],
     );
   }

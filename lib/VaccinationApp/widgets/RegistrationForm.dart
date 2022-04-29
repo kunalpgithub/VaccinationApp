@@ -18,11 +18,11 @@ class _RegistrationFormState extends State<RegistrationForm> {
       children: <Widget>[
         Card(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(40, 40, 40, 5),
+            padding: const EdgeInsets.fromLTRB(35, 35, 35, 5),
             child: Form(
                 key: _formKey,
                 child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
