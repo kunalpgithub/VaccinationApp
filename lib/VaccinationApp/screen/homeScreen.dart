@@ -6,7 +6,7 @@ import 'package:myapp/VaccinationApp/screen/loginScreen.dart';
 // import 'package:myapp/VaccinationApp/widgets/LoginForm.dart';
 import 'package:myapp/VaccinationApp/widgets/RegistrationForm.dart';
 
-import '../widgets/withoutLoginLayout.dart';
+import '../widgets/WithoutLoginLayout.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

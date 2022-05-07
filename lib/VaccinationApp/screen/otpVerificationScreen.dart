@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:myapp/VaccinationApp/widgets/withoutLoginLayout.dart';
+import 'package:myapp/VaccinationApp/widgets/WithoutLoginLayout.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
   const OtpVerificationScreen({Key? key}) : super(key: key);

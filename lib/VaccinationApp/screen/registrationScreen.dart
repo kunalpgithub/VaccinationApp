@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/VaccinationApp/widgets/RegistrationForm.dart';
-import 'package:myapp/VaccinationApp/widgets/withoutLoginLayout.dart';
+import 'package:myapp/VaccinationApp/widgets/WithoutLoginLayout.dart';
 
 class RegistrationScreen extends StatelessWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
