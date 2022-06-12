@@ -1,6 +1,9 @@
 // import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:myapp/VaccinationApp/providers/registration_form_provider.dart';
 import 'package:myapp/VaccinationApp/services/auth_service.dart';
+import 'package:provider/provider.dart';
 
 import '../model/user_registration.dart';
 
@@ -13,6 +16,7 @@ class RegistrationForm extends StatefulWidget {
 
 class _RegistrationFormState extends State<RegistrationForm> {
   final _formKey = GlobalKey<FormState>();
+  late RegistrationFormProvider _registrationFormProvider;
   final primaryColor = const Color(0xFFFF9A9E);
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
@@ -31,6 +35,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
 
   @override
   Widget build(BuildContext context) {
+    _registrationFormProvider = Provider.of<RegistrationFormProvider>(context);
     return Stack(
       children: <Widget>[
         Card(
@@ -54,8 +59,11 @@ class _RegistrationFormState extends State<RegistrationForm> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: AppTextFormField(_nameController,
-                            labelText: 'Full Name', iconData: Icons.person),
+                        child: AppTextFormField(
+                          _nameController,
+                          labelText: 'Full Name',
+                          iconData: Icons.person,
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -63,6 +71,10 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           _emailController,
                           labelText: 'Email Address',
                           iconData: Icons.email,
+                          onChanged:
+                              _registrationFormProvider.validateEmailAddress,
+                          errorText:
+                              _registrationFormProvider.emailAddress.error,
                         ),
                       ),
                       Padding(
@@ -83,9 +95,17 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         child: Row(
                           children: [
                             Expanded(
-                              child: ElevatedButton(
-                                  onPressed: handleRegister,
-                                  child: const Text('Register')),
+                              child: Consumer<RegistrationFormProvider>(
+                                builder: (context, model, child) {
+                                  return ElevatedButton(
+                                      onPressed: () {
+                                        if (model.validate) {
+                                          handleRegister();
+                                        }
+                                      },
+                                      child: const Text('Register'));
+                                },
+                              ),
                             )
                           ],
                         ),
@@ -118,8 +138,21 @@ class AppTextFormField extends StatelessWidget {
   final String labelText;
   final IconData? iconData;
   final TextEditingController textController;
+  final Function(String?)? onChanged;
+  final String? Function(String?)? validator;
+  final List<TextInputFormatter>? inputFormatters;
+  final String? hintText;
+  final String? errorText;
+
   const AppTextFormField(this.textController,
-      {Key? key, required this.labelText, this.iconData})
+      {Key? key,
+      required this.labelText,
+      this.iconData,
+      this.hintText,
+      this.errorText,
+      this.onChanged,
+      this.validator,
+      this.inputFormatters})
       : super(key: key);
 
   @override
@@ -129,10 +162,16 @@ class AppTextFormField extends StatelessWidget {
         shadowColor: Colors.grey,
         borderRadius: const BorderRadius.all(Radius.circular(8.0)),
         child: TextFormField(
+          onChanged: onChanged,
+          validator: validator,
+          inputFormatters: inputFormatters,
           controller: textController,
           obscureText: false,
-          decoration:
-              InputDecoration(labelText: labelText, prefixIcon: Icon(iconData)),
+          decoration: InputDecoration(
+              labelText: labelText,
+              prefixIcon: Icon(iconData),
+              hintText: hintText,
+              errorText: errorText),
         ));
   }
 }
