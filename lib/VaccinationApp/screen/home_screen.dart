@@ -1,16 +1,16 @@
 // import 'dart:math';
-import 'dart:developer';
+// import 'dart:developer';
 
 import 'package:flutter/material.dart';
 // import 'package:myapp/FriendlyChatApp/ChatScreen.dart';
 // import 'package:myapp/VaccinationApp/screen/loginScreen.dart';
-import 'package:myapp/VaccinationApp/services/HttpService.dart';
+import 'package:myapp/VaccinationApp/services/http_service.dart';
 // import 'package:myapp/VaccinationApp/screen/registrationScreen.dart';
 // import 'package:myapp/VaccinationApp/widgets/LoginForm.dart';
 // import 'package:myapp/VaccinationApp/widgets/RegistrationForm.dart';
 
-import '../widgets/WithoutLoginLayout.dart';
-import 'package:provider/provider.dart';
+import '../widgets/without_login_layout.dart';
+// import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

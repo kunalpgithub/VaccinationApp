@@ -3,12 +3,12 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:myapp/FriendlyChatApp/FriendlyChatApp.dart';
-import 'package:myapp/RandomWords/RandomWordsApp.dart';
-import 'package:myapp/VaccinationApp/vaccinationApp.dart';
+// import 'package:myapp/FriendlyChatApp/FriendlyChatApp.dart';
+// import 'package:myapp/RandomWords/RandomWordsApp.dart';
+import 'package:myapp/VaccinationApp/vaccination_app.dart';
 
 void main() {
-  runApp(VaccinationApp()
+  runApp(const VaccinationApp()
       //const FriendlyChatApp()
       // RandomWordsApp()
       );

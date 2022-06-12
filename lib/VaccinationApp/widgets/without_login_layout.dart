@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class WithOutLoginLayout extends StatelessWidget {
   final Widget? body;
-  String backgroundImage;
-  WithOutLoginLayout(
+  final String backgroundImage;
+  const WithOutLoginLayout(
       {Key? key,
       this.body,
       this.backgroundImage = 'assets/images/pexels-anna-shvets-4588047.png'})

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/VaccinationApp/screen/dashboardScreen.dart';
-import 'package:myapp/VaccinationApp/screen/homeScreen.dart';
-import 'package:myapp/VaccinationApp/screen/loginScreen.dart';
-import 'package:myapp/VaccinationApp/screen/otpVerificationScreen.dart';
-import 'package:myapp/VaccinationApp/screen/registrationScreen.dart';
+import 'package:myapp/VaccinationApp/screen/dashboard_screen.dart';
+import 'package:myapp/VaccinationApp/screen/home_screen.dart';
+import 'package:myapp/VaccinationApp/screen/login_screen.dart';
+import 'package:myapp/VaccinationApp/screen/otp_verification_screen.dart';
+import 'package:myapp/VaccinationApp/screen/registration_screen.dart';
 
 class VaccinationApp extends StatelessWidget {
   const VaccinationApp({Key? key}) : super(key: key);
@@ -17,12 +17,12 @@ class VaccinationApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle secondaryButtonStyle = ButtonStyle(
-      textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 20)),
-      backgroundColor: MaterialStateProperty.all(secondaryColor),
-      foregroundColor: MaterialStateProperty.all(primaryTextColor),
-      padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
-    );
+    // final ButtonStyle secondaryButtonStyle = ButtonStyle(
+    //   textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 20)),
+    //   backgroundColor: MaterialStateProperty.all(secondaryColor),
+    //   foregroundColor: MaterialStateProperty.all(primaryTextColor),
+    //   padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+    // );
     final ButtonStyle primaryButtonStyle = ButtonStyle(
       textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 20)),
       backgroundColor: MaterialStateProperty.all(primaryColor),
@@ -95,7 +95,7 @@ class VaccinationApp extends StatelessWidget {
               iconTheme: IconThemeData(color: primaryColor, size: 30.0))),
 
       routes: {
-        '/': (context) => HomeScreen(),
+        '/': (context) => const HomeScreen(),
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegistrationScreen(),
         '/otpverification': (context) => const OtpVerificationScreen(),

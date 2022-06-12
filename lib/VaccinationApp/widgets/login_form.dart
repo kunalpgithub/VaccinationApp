@@ -1,8 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:myapp/VaccinationApp/widgets/OtpInput.dart';
-import 'package:myapp/VaccinationApp/widgets/RegistrationForm.dart';
+import 'package:myapp/VaccinationApp/widgets/otp_input.dart';
+import 'package:myapp/VaccinationApp/widgets/registration_form.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);

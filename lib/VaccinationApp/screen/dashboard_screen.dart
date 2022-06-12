@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/WithLoginLayout.dart';
-import '../widgets/EllipsePainter.dart';
+import '../widgets/with_login_layout.dart';
+// import '../widgets/EllipsePainter.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);

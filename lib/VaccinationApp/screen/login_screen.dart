@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/VaccinationApp/widgets/RegistrationForm.dart';
-import 'package:myapp/VaccinationApp/widgets/WithoutLoginLayout.dart';
 
-class RegistrationScreen extends StatelessWidget {
-  const RegistrationScreen({Key? key}) : super(key: key);
+import 'package:myapp/VaccinationApp/widgets/without_login_layout.dart';
+
+import '../widgets/login_form.dart';
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  bool verifyOtp = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +31,7 @@ class RegistrationScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: const [
-              RegistrationForm(),
+              LoginForm(),
             ],
           ),
         ),

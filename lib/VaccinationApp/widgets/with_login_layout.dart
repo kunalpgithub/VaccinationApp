@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'EllipsePainter.dart';
-
 class WithLoginLayout extends StatelessWidget {
   final Widget? body;
   const WithLoginLayout({Key? key, this.body}) : super(key: key);

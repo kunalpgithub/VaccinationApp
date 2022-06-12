@@ -1,8 +1,7 @@
 import 'dart:async';
-import 'dart:convert';
 
-import 'package:myapp/VaccinationApp/services/dioClient.dart';
-import '../model/userRegistration.dart';
+import 'package:myapp/VaccinationApp/services/dio_client.dart';
+import '../model/user_registration.dart';
 
 class AuthService {
   Future<UserRegistration> postUser(UserRegistration model) async {
