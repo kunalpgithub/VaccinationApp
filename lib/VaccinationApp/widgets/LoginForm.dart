@@ -39,23 +39,8 @@ class _LoginFormState extends State<LoginForm> {
                     style: Theme.of(context).textTheme.bodyText2),
                 const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
                 if (!isOtpSent) ...[
-                  AppTextFormField(
-                    // controller: _mobileController,
-                    // keyboardType: TextInputType.number,
-                    // maxLength: 10,
-                    // inputFormatters: <TextInputFormatter>[
-                    //   FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                    // ],
-                    // validator: (value) {
-                    //   if (value == null || value.isEmpty) {
-                    //     return "Please enter mobile number.";
-                    //   }
-                    //   return null;
-                    // },
-                    // decoration: const InputDecoration(
-                    //     border: OutlineInputBorder(), labelText: 'Mobile Number'),
-                    labelText: 'Mobile Number',
-                  ),
+                  AppTextFormField(_mobileController,
+                      labelText: 'Mobile Number'),
                   const Padding(padding: EdgeInsets.symmetric(vertical: 13)),
                   Row(
                     children: [

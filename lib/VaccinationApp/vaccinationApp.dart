@@ -88,9 +88,14 @@ class VaccinationApp extends StatelessWidget {
               OutlinedButtonThemeData(style: secondaryButtonWithOpacity),
           textButtonTheme: TextButtonThemeData(
               style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all(primaryColor)))),
+                  foregroundColor: MaterialStateProperty.all(primaryColor))),
+          appBarTheme: AppBarTheme(
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              iconTheme: IconThemeData(color: primaryColor, size: 30.0))),
+
       routes: {
-        '/': (context) => const HomeScreen(),
+        '/': (context) => HomeScreen(),
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegistrationScreen(),
         '/otpverification': (context) => const OtpVerificationScreen(),

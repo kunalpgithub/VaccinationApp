@@ -35,6 +35,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   english_words: ^4.0.0
+  http: ^0.13.3
+  provider: ^6.0.3
+  dio: ^4.0.6
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +72,8 @@ flutter:
     - assets/images/injection_1.png
     - assets/images/icons8-injection-64_1.png
     - assets/images/pexels-blue-bird-7210698_2.png
+    - assets/json/user/login.json
+    - assets/json/user/user.json
 
     # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

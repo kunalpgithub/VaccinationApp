@@ -1,16 +1,34 @@
 // import 'dart:math';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 // import 'package:myapp/FriendlyChatApp/ChatScreen.dart';
-import 'package:myapp/VaccinationApp/screen/loginScreen.dart';
+// import 'package:myapp/VaccinationApp/screen/loginScreen.dart';
+import 'package:myapp/VaccinationApp/services/HttpService.dart';
 // import 'package:myapp/VaccinationApp/screen/registrationScreen.dart';
 // import 'package:myapp/VaccinationApp/widgets/LoginForm.dart';
-import 'package:myapp/VaccinationApp/widgets/RegistrationForm.dart';
+// import 'package:myapp/VaccinationApp/widgets/RegistrationForm.dart';
 
 import '../widgets/WithoutLoginLayout.dart';
+import 'package:provider/provider.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  late Future<Album> futureAlbum;
+
+  @override
+  void initState() {
+    super.initState();
+    futureAlbum = fetchAlbum();
+  }
+
+  // @protected
   @override
   Widget build(BuildContext context) {
     return WithOutLoginLayout(
@@ -68,7 +86,19 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ],
-            )
+            ),
+            FutureBuilder<Album>(
+                future: futureAlbum, //fetchAlbum(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    if (snapshot.hasData) {
+                      return Text(snapshot.data!.title);
+                    } else if (snapshot.hasError) {
+                      return Text('${snapshot.error}');
+                    }
+                  }
+                  return const CircularProgressIndicator();
+                })
           ]),
     );
   }

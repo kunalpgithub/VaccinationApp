@@ -1,5 +1,8 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/VaccinationApp/services/AuthService.dart';
+
+import '../model/userRegistration.dart';
 
 class RegistrationForm extends StatefulWidget {
   const RegistrationForm({Key? key}) : super(key: key);
@@ -11,6 +14,20 @@ class RegistrationForm extends StatefulWidget {
 class _RegistrationFormState extends State<RegistrationForm> {
   final _formKey = GlobalKey<FormState>();
   final primaryColor = const Color(0xFFFF9A9E);
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _mobileController = TextEditingController();
+  final _cityController = TextEditingController();
+
+  void handleRegister() async {
+    final response = await AuthService().postUser(UserRegistration(
+        userId: 0,
+        fullName: _nameController.text,
+        emailAddress: _emailController.text,
+        mobileNumber: _mobileController.text,
+        city: _cityController.text));
+    if (response.userId > 0) Navigator.pushNamed(context, '/login');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,24 +54,26 @@ class _RegistrationFormState extends State<RegistrationForm> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: AppTextFormField(
+                        child: AppTextFormField(_nameController,
                             labelText: 'Full Name', iconData: Icons.person),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: AppTextFormField(
+                          _emailController,
                           labelText: 'Email Address',
                           iconData: Icons.email,
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: AppTextFormField(
+                        child: AppTextFormField(_mobileController,
                             labelText: 'Mobile Number', iconData: Icons.phone),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: AppTextFormField(
+                          _cityController,
                           labelText: 'City/Town',
                           iconData: Icons.location_city,
                         ),
@@ -65,9 +84,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           children: [
                             Expanded(
                               child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.pushNamed(context, '/dashboard');
-                                  },
+                                  onPressed: handleRegister,
                                   child: const Text('Register')),
                             )
                           ],
@@ -98,9 +115,11 @@ class _RegistrationFormState extends State<RegistrationForm> {
 }
 
 class AppTextFormField extends StatelessWidget {
-  String labelText;
-  IconData? iconData;
-  AppTextFormField({Key? key, required this.labelText, this.iconData})
+  final String labelText;
+  final IconData? iconData;
+  final TextEditingController textController;
+  const AppTextFormField(this.textController,
+      {Key? key, required this.labelText, this.iconData})
       : super(key: key);
 
   @override
@@ -110,6 +129,7 @@ class AppTextFormField extends StatelessWidget {
         shadowColor: Colors.grey,
         borderRadius: const BorderRadius.all(Radius.circular(8.0)),
         child: TextFormField(
+          controller: textController,
           obscureText: false,
           decoration:
               InputDecoration(labelText: labelText, prefixIcon: Icon(iconData)),
