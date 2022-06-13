@@ -63,6 +63,11 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           _nameController,
                           labelText: 'Full Name',
                           iconData: Icons.person,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                              RegExp(r"[a-zA-Z]+|\s"),
+                            )
+                          ],
                         ),
                       ),
                       Padding(
@@ -79,8 +84,17 @@ class _RegistrationFormState extends State<RegistrationForm> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: AppTextFormField(_mobileController,
-                            labelText: 'Mobile Number', iconData: Icons.phone),
+                        child: AppTextFormField(
+                          _mobileController,
+                          labelText: 'Mobile Number',
+                          iconData: Icons.phone,
+                          inputFormatters: [
+                            FilteringTextInputFormatter(RegExp(r"[0-9]"),
+                                allow: true)
+                          ],
+                          onChanged: _registrationFormProvider.validateMobile,
+                          errorText: _registrationFormProvider.mobile.error,
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -88,6 +102,11 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           _cityController,
                           labelText: 'City/Town',
                           iconData: Icons.location_city,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                              RegExp(r"[a-zA-Z]+|\s"),
+                            )
+                          ],
                         ),
                       ),
                       Padding(

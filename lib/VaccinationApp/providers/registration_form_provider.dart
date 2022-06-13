@@ -23,6 +23,14 @@ class RegistrationFormProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void validateMobile(String? val) {
+    if (val != null && val.isValidPhone) {
+      _mobile = ValidationModel(val, null);
+    } else {
+      _mobile = ValidationModel(null, 'Please enter a valid mobile');
+    }
+  }
+
   bool get validate {
     return _emailAddress.value != null;
     // &&
